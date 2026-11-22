@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Giám sát Silo Xi măng – Vạn Ninh</title>
+<style>
+:root{--blue:#c39a68;--blue2:#a67c4a;--red:#d4141c;--bg:#f6f3ee;--card:#fff;--text:#2b2620;--muted:#6f655a;--line:#e3dacd;--cyl:#ece6dc;--steel:#b0824a;--orange:#c9302c;--th:#efe8dc;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17130f;--card:#221c16;--text:#efe8de;--muted:#b3a794;--line:#3a3025;--cyl:#352c22;--th:#2d251c}}
+:root[data-theme="dark"]{--bg:#17130f;--card:#221c16;--text:#efe8de;--muted:#b3a794;--line:#3a3025;--cyl:#352c22;--th:#2d251c}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+.top{background:var(--th);color:var(--muted);font-size:12px;padding:6px 16px}
+.brand{background:var(--card);display:flex;align-items:center;justify-content:center;gap:12px 28px;flex-wrap:wrap;padding:14px 16px;font-family:'Times New Roman',Times,serif;color:var(--blue2)}
+.brand .lg{font-size:clamp(28px,7vw,42px);font-weight:bold;letter-spacing:2px;line-height:1;text-align:center}
+.brand .lg small{display:block;font-size:.55em;letter-spacing:4px}
+.brand .nm{font-size:clamp(14px,3.6vw,23px);font-weight:bold;text-transform:uppercase;text-align:center;line-height:1.3}
+nav{background:var(--blue);display:flex;flex-wrap:wrap;padding:0 8px}
+nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:13px;text-transform:uppercase;padding:14px 12px}
+nav a.on,nav a:hover{background:var(--blue2)}
+main{max-width:1100px;margin:0 auto;padding:16px}
+h2{font-family:'Times New Roman',Times,serif;font-size:22px;color:var(--red);margin:0 0 12px;text-transform:uppercase;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+h2 input{font-size:14px;font-family:Arial,sans-serif}
+:root[data-theme="dark"] h2{color:#ff6a70}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{color:#ff6a70}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.silos{display:flex;justify-content:center;gap:clamp(24px,8vw,90px);flex-wrap:wrap}
+.sc{text-align:center}
+.tank{display:flex;align-items:flex-start;justify-content:center;gap:6px}
+.scale{height:160px;display:flex;flex-direction:column-reverse;justify-content:space-between;font-size:11px;color:var(--muted);text-align:right}
+.sil{width:120px}
+.cyl{height:160px;background:var(--cyl);border:2px solid var(--blue2);border-bottom:none;position:relative;overflow:hidden}
+.fill{position:absolute;bottom:0;width:100%;background:var(--steel);transition:height .4s}
+.fill.o{background:var(--orange)}
+.cone{width:0;height:0;border-left:58px solid transparent;border-right:58px solid transparent;border-top:44px solid var(--blue2);margin:0 auto}
+.lab{font-weight:bold;margin:8px 0 4px;color:var(--blue2)}
+.mm{font-weight:bold;margin-top:6px}
+:root[data-theme="dark"] .lab{color:#e0b88a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lab{color:#e0b88a}}
+input{font:inherit;padding:7px 8px;border:1px solid var(--line);border-radius:4px;background:var(--card);color:var(--text)}
+input[type=number]{width:84px;text-align:center}
+.tot{text-align:center;margin-top:14px;color:var(--muted);font-size:13px}
+.res{display:inline-block;background:var(--blue2);color:#fff;border-radius:8px;padding:8px 22px;font-size:clamp(24px,7vw,34px);font-weight:bold;border-bottom:4px solid var(--red);margin-top:4px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:14px}
+button{font:inherit;font-size:14px;padding:8px 16px;border:0;border-radius:4px;background:var(--blue2);color:#fff;cursor:pointer}
+button:hover{opacity:.9}button.r{background:var(--red)}button.g{background:#7d7468}
+button.ic{padding:4px 9px;background:transparent;border:1px solid var(--line);color:var(--text)}
+button.ic.r{background:var(--red);color:#fff;border-color:var(--red)}
+.wrap{max-height:420px;overflow:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:center}
+th{position:sticky;top:0;background:var(--th);z-index:1}
+#st{font-size:13px;color:var(--muted);text-align:center;margin-top:10px;min-height:18px}
+footer{text-align:center;font-size:12px;color:var(--muted);padding:12px}
+.panel{max-width:460px;margin:0 auto;position:relative;container-type:inline-size}
+.panel input.vin[type=number]{position:absolute;top:80.9%;height:9.2%;width:20%;border:0;border-bottom:2px dashed currentColor;border-radius:0;background:transparent;font:bold 9.9cqw 'Times New Roman',Times,serif;text-align:right;padding:0;margin:0;-moz-appearance:textfield;outline:none}
+.panel input.vin::-webkit-outer-spin-button,.panel input.vin::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.hint{text-align:center;font-size:13px;color:var(--muted);margin-top:8px}.panel svg{width:100%;height:auto;display:block;border:1px solid var(--line)}
+.ins{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px}.ins label{display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:bold;font-size:14px}.ins input[type=number]{width:120px;font-size:22px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.65);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
+.ov[hidden]{display:none}
+.mb{background:var(--card);border-radius:8px;padding:12px;max-width:560px;width:100%;max-height:100%;overflow:auto}
+.mb img{max-width:100%;max-height:62vh;width:auto;height:auto;border-radius:4px;display:block;margin:0 auto}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+<div class="top">Tel: (+84.236) 3842127 &nbsp;-&nbsp; Fax: (+84.236) 3842441</div>
+<div class="brand"><div class="lg">VICEM<small>HẢI VÂN</small></div><div class="nm">Công ty Cổ phần Xi măng VICEM Hải Vân<br>Nhà máy Xi măng Vạn Ninh</div></div>
+<nav><a href="https://www.haivancement.vn/" target="_blank" rel="noopener">Trang chủ công ty</a><a class="on" href="#">Giám sát Silo</a></nav>
+<main>
+<section class="card">
+<h2>Mức xi măng hiện tại <input type="datetime-local" id="dt" title="Thời gian nhập"></h2>
+<div class="panel" id="panel"><div id="svgc"></div><input class="vin" id="b1" type="number" inputmode="decimal" step="0.1" min="0" max="9" value="2.5" aria-label="Blank level Silo 1 (m)" style="left:6.5%;color:#5b9bd5"><input class="vin" id="b2" type="number" inputmode="decimal" step="0.1" min="0" max="9" value="2.7" aria-label="Blank level Silo 2 (m)" style="left:50.7%;color:#ed7d31"></div>
+<div class="hint">Chạm vào số mét màu xanh/cam trên hình để nhập mức trống. Bấm “Sao chép hình ảnh” để lấy ảnh và tự lưu số liệu vào lịch sử.</div>
+<div class="bar">
+<button id="save" hidden>Cập nhật</button>
+<button class="g" id="cancel" hidden>Hủy sửa</button>
+<button class="g" id="restore">Khôi phục (nhập Excel)</button>
+<button class="g" id="xl">Xuất Excel</button>
+<button class="r" id="share">Sao chép hình ảnh</button>
+<input type="file" id="fi" accept=".xlsx,.xls,.csv" hidden>
+</div>
+<div id="st"></div>
+</section>
+<section class="card">
+<h2>Lịch sử ghi nhận</h2>
+<div class="bar" style="margin:0 0 12px;justify-content:flex-start">
+<label>Tìm theo ngày: <input type="date" id="d"></label>
+<button class="g" id="clr">Xem tất cả</button>
+</div>
+<div class="wrap"><table><thead><tr><th>Thời gian</th><th>Blank level Silo 1 (m)</th><th>Blank level Silo 2 (m)</th><th>Khối lượng xi măng (tấn)</th><th>Chỉnh sửa</th></tr></thead><tbody id="tb"></tbody></table></div>
+</section>
+</main>
+<footer>© Nhà máy Xi măng Vạn Ninh – VICEM Hải Vân</footer>
+<div class="ov" id="ov" hidden><div class="mb"><img id="im" alt="Ảnh chia sẻ"><div class="hint" id="mh"></div><div class="bar"><button class="g" id="cp">Sao chép ảnh</button><button class="g" id="sv">Tải ảnh</button><button class="r" id="cl">Đóng</button></div></div></div>
+<div class="ov" id="pv" hidden><div class="mb" style="max-width:300px;text-align:center"><div style="font-weight:bold;margin-bottom:10px">Nhập mật khẩu để sửa / xóa dòng</div><input type="password" inputmode="numeric" id="pin" maxlength="8" autocomplete="off" style="width:150px;font-size:22px;text-align:center"><div class="hint" id="pe" style="color:var(--red)"></div><div class="bar"><button id="pok">Xác nhận</button><button class="g" id="pno">Hủy</button></div></div></div>
+<script>
+// Silo: thân 9 m, dung tích 200 tấn → 200/9 tấn trên mỗi mét liệu
+const H=9,CAP=200,K=CAP/H;
+let rows=[],editId=null,db=null,filt='',touched=false;
+const $=id=>document.getElementById(id);
+const p=n=>String(n).padStart(2,'0');
+const clamp=v=>Math.min(H,Math.max(0,isNaN(v)?0:v));
+const mass=b=>(H-clamp(b))*K;
+const r1=x=>Math.round(x*10)/10;
+const fmt=ts=>{const d=new Date(ts);return p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+' '+p(d.getHours())+':'+p(d.getMinutes())};
+const dkey=ts=>{const d=new Date(ts);return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())};
+const toIn=ts=>{const d=new Date(ts);return dkey(ts)+'T'+p(d.getHours())+':'+p(d.getMinutes())};
+const val=n=>parseFloat($('b'+n).value);
+const curTs=()=>$('dt').value?new Date($('dt').value).getTime():Date.now();
+const say=t=>$('st').textContent=t;
+
+const AUTHOR='LE QUOC HUY-2008@gmail.com';
+const r2=x=>String(Math.round(x*100)/100);
+const NB='\u00a0\u00a0';
+function mk(s1,s2,ts,live){
+ const d=new Date(ts),ms=[mass(s1),mass(s2)],bs=[s1,s2],cols=['#5b9bd5','#ed7d31'],sx=[35,232],W=188,T=367,HH=274;
+ const dstr=p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+' '+d.getHours()+':'+p(d.getMinutes());
+ const lng='Ngày '+d.getDate()+' tháng '+(d.getMonth()+1)+' năm '+d.getFullYear();
+ const tx=(x,y,sz,fill,t,extra)=>'<text x="'+x+'" y="'+y+'" font-size="'+sz+'" font-weight="bold" fill="'+fill+'" text-anchor="middle" '+(extra||'')+'>'+t+'</text>';
+ let o='<svg xmlns="http://www.w3.org/2000/svg" width="446" height="612" viewBox="0 0 446 612" font-family="Times New Roman,Times,serif"><g transform="translate(0,-56)"><rect width="446" height="700" fill="#fff"/>';
+  o+='<rect y="56" width="446" height="419" fill="#e9e9e9"/>'+tx(118,77,14,'#1e5f2a',dstr,'font-style="italic"')+tx(312,77,14,'#1e5f2a',lng,'font-style="italic"');
+ for(let i=0;i<=9;i++)o+=tx(16,T-i*HH/9+3,10,'#333',i);
+ [0,1].forEach(i=>{
+  const x=sx[i],h=(H-bs[i])/H*HH,cx=x+W/2;
+  o+='<rect x="'+x+'" y="93" width="'+W+'" height="277" fill="#3a3a3a"/><rect x="'+(x+8)+'" y="93" width="'+(W-16)+'" height="'+HH+'" fill="#cfcfcf"/><rect x="'+(x+8)+'" y="'+(T-h)+'" width="'+(W-16)+'" height="'+h+'" fill="'+cols[i]+'"/>';
+  o+='<polygon points="'+x+',370 '+(x+W)+',370 '+(cx+28)+',448 '+(cx-28)+',448" fill="#bdbdbd" stroke="#333" stroke-width="3"/><rect x="'+x+'" y="367" width="'+W+'" height="6" fill="#222"/>';
+  o+=tx(cx,398,17,cols[i],'SILO')+tx(cx,418,17,cols[i],i+1);
+  o+=tx(cx,497,16,'#111','Blank level')+tx(cx,520,16,'#111','Silo '+(i+1))+tx(cx,543,16,'#111','(m)');
+ });
+ o+='<rect y="475" width="446" height="75" fill="#d9d9d9"/>';
+ // vẽ lại chữ lên trên nền xám
+ [0,1].forEach(i=>{const cx=sx[i]+W/2;o+=tx(cx,497,16,'#111','Blank level')+tx(cx,520,16,'#111','Silo '+(i+1))+tx(cx,543,16,'#111','(m)')});
+ o+='<rect y="551" width="446" height="56" fill="#d0d0d0"/>';
+ [0,1].forEach(i=>{const cx=sx[i]+W/2;o+=live?'<text x="'+(cx+8)+'" y="597" font-size="44" font-weight="bold" fill="'+cols[i]+'">mét</text>':tx(cx,597,44,cols[i],r2(bs[i])+NB+'mét')});
+ o+='<rect y="612" width="446" height="56" fill="#bfa58c"/>'+tx(223,656,50,'#000',r1(ms[0]+ms[1]).toFixed(1)+NB+'tấn');
+ o+='</g></svg>';
+ return o;
+}
+function upd(){$('svgc').innerHTML=mk(clamp(val(1)),clamp(val(2)),curTs(),true);pre()}
+['b1','b2','dt'].forEach(i=>$(i).addEventListener('input',upd));
+$('dt').addEventListener('input',()=>touched=true);
+function resetTime(){touched=false;$('dt').value=toIn(Date.now())}
+resetTime();upd();
+setInterval(()=>{if(!touched&&!editId){$('dt').value=toIn(Date.now());upd()}},20000);
+
+function render(){
+ rows.sort((a,b)=>b.ts-a.ts);
+ const list=filt?rows.filter(r=>dkey(r.ts)===filt):rows;
+ $('tb').innerHTML=list.length?list.map(r=>'<tr><td>'+fmt(r.ts)+'</td><td>'+r.s1+'</td><td>'+r.s2+'</td><td>'+r.t+'</td><td><button class="ic" data-e="'+r.id+'" title="Chỉnh sửa">✏️</button> <button class="ic" data-x="'+r.id+'" title="Xóa dòng">🗑</button></td></tr>').join(''):'<tr><td colspan="5">Chưa có dữ liệu</td></tr>';
+}
+function endEdit(){editId=null;$('cancel').hidden=true;$('save').hidden=true;resetTime()}
+$('cancel').onclick=()=>{endEdit();say('Đã hủy sửa.')};
+$('d').onchange=e=>{filt=e.target.value;render()};
+$('clr').onclick=()=>{filt='';$('d').value='';render()};
+
+// Lưu dữ liệu: dùng chung trên máy chủ nếu có, nếu không thì lưu trong trình duyệt
+const LS='silo_rows_v1';
+function lsSet(){try{localStorage.setItem(LS,JSON.stringify(rows))}catch(e){}}
+async function init(){
+ try{db=await claude.use('db')}catch(e){db=null}
+ if(db){
+  db.collection('readings').onSnapshot(s=>{rows=s.docs.map(d=>({id:d.id,...d.data()}));render()},()=>{});
+  say('Dữ liệu được lưu chung trên máy chủ.');
+ }else{try{rows=JSON.parse(localStorage.getItem(LS)||'[]')}catch(e){rows=[]}render();say('Dữ liệu đang lưu trên trình duyệt này.')}
+}
+async function put(rec){
+ if(db)await db.collection('readings').add(rec);
+ else rows.push({...rec,id:'r'+Date.now()+Math.random().toString(36).slice(2,6)});
+}
+async function doSave(){
+ const s1=clamp(val(1)),s2=clamp(val(2));
+ const rec={s1,s2,t:r1(mass(s1)+mass(s2)),ts:touched||editId?curTs():Date.now()};
+ if(!editId&&rows.some(r=>r.s1===s1&&r.s2===s2&&Math.abs(r.ts-rec.ts)<60000)){say('Số liệu này đã được lưu.');return}
+ try{
+  if(editId){
+   if(db)await db.doc('readings/'+editId).update(rec);
+   else{Object.assign(rows.find(x=>x.id===editId),rec)}
+   say('Đã cập nhật dòng '+fmt(rec.ts)+'.');
+  }else{await put(rec);say('Đã lưu lúc '+fmt(rec.ts)+'.')}
+  if(!db){lsSet();render()}
+  endEdit();
+ }catch(e){say('Không lưu được (có thể bạn chỉ có quyền xem).')}
+}
+$('save').onclick=doSave;
+async function delRow(id){
+ try{
+  if(db)await db.doc('readings/'+id).delete();
+  else{rows=rows.filter(x=>x.id!==id);lsSet();render()}
+  if(editId===id)endEdit();say('Đã xóa dòng.');
+ }catch(e){say('Không xóa được (có thể bạn chỉ có quyền xem).')}
+}
+// Mật khẩu khi sửa / xóa dòng (nhập đúng thì mở khóa 5 phút)
+const PIN='2015';let unlockUntil=0,pinCb=null;
+function needPin(cb){
+ if(Date.now()<unlockUntil){cb();return}
+ pinCb=cb;$('pin').value='';$('pe').textContent='';$('pv').hidden=false;setTimeout(()=>$('pin').focus(),50);
+}
+function pinOk(){
+ if($('pin').value===PIN){unlockUntil=Date.now()+300000;$('pv').hidden=true;const c=pinCb;pinCb=null;if(c)c()}
+ else{$('pe').textContent='Sai mật khẩu.';$('pin').value=''}
+}
+$('pok').onclick=pinOk;
+$('pno').onclick=()=>{$('pv').hidden=true;pinCb=null};
+$('pin').addEventListener('keydown',e=>{if(e.key==='Enter')pinOk()});
+function armDel(id){
+ const x=document.querySelector('[data-x="'+id+'"]');if(!x)return;
+ x.dataset.arm=1;x.textContent='Xóa?';x.classList.add('r');
+ setTimeout(()=>{if(x.isConnected){delete x.dataset.arm;x.textContent='🗑';x.classList.remove('r')}},3000);
+}
+function startEdit(r){
+ editId=r.id;touched=true;$('b1').value=r.s1;$('b2').value=r.s2;$('dt').value=toIn(r.ts);upd();
+ $('cancel').hidden=false;$('save').hidden=false;say('Đang sửa dòng '+fmt(r.ts)+' – đổi thời gian hoặc mức trống rồi bấm Cập nhật.');
+ scrollTo({top:0,behavior:'smooth'});
+}
+$('tb').addEventListener('click',e=>{
+ const x=e.target.closest('[data-x]');
+ if(x){if(x.dataset.arm)delRow(x.dataset.x);else needPin(()=>armDel(x.dataset.x));return}
+ const b=e.target.closest('[data-e]');if(!b)return;
+ const r=rows.find(z=>z.id===b.dataset.e);if(!r)return;
+ needPin(()=>startEdit(r));
+});
+
+// Xuất / nhập Excel
+async function saveFile(name,data,type){
+ let dl=null;try{dl=await claude.use('downloads')}catch(e){}
+ if(dl)return dl.save({filename:name,data});
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;a.click();
+}
+$('xl').onclick=async()=>{
+ if(typeof XLSX==='undefined'){say('Chưa tải được thư viện Excel, hãy kiểm tra mạng.');return}
+ const list=filt?rows.filter(r=>dkey(r.ts)===filt):rows;
+ const aoa=[['Thời gian','Blank level Silo 1 (m)','Blank level Silo 2 (m)','Khối lượng Xi măng (tấn)']].concat(list.map(r=>[fmt(r.ts),r.s1,r.s2,r.t]));
+ const ws=XLSX.utils.aoa_to_sheet(aoa);ws['!cols']=[{wch:18},{wch:24},{wch:24},{wch:26}];
+ const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Silo');
+ try{await saveFile('giam-sat-silo.xlsx',XLSX.write(wb,{type:'array',bookType:'xlsx'}),'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')}catch(e){say('Chưa xuất được file.')}
+};
+function pt(v){
+ if(v instanceof Date)return Math.round(v.getTime()/60000)*60000;
+ if(typeof v==='number')return Math.round(((v-25569)*86400000+new Date().getTimezoneOffset()*60000)/60000)*60000;
+ const m=String(v||'').match(/(\d{1,2})\/(\d{1,2})\/(\d{4})(?:[ T]+(\d{1,2}):(\d{2}))?/);
+ return m?new Date(+m[3],m[2]-1,+m[1],+(m[4]||0),+(m[5]||0)).getTime():NaN;
+}
+$('restore').onclick=()=>$('fi').click();
+$('fi').onchange=async e=>{
+ const f=e.target.files[0];e.target.value='';if(!f)return;
+ if(typeof XLSX==='undefined'){say('Chưa tải được thư viện Excel, hãy kiểm tra mạng.');return}
+ try{
+  const wb=XLSX.read(await f.arrayBuffer(),{type:'array',cellDates:true});
+  const data=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,raw:true});
+  const have=new Set(rows.map(r=>r.ts+'|'+r.s1+'|'+r.s2));let ok=0,skip=0;const add=[];
+  data.forEach(r=>{
+   const ts=pt(r[0]),s1=parseFloat(String(r[1]).replace(',','.')),s2=parseFloat(String(r[2]).replace(',','.'));
+   if(isNaN(ts)||isNaN(s1)||isNaN(s2)){skip++;return}
+   const k=ts+'|'+s1+'|'+s2;if(have.has(k)){skip++;return}have.add(k);
+   let t=parseFloat(String(r[3]).replace(',','.'));if(isNaN(t))t=r1(mass(s1)+mass(s2));
+   add.push({ts,s1,s2,t});
+  });
+  for(const rec of add){await put(rec);ok++}
+  if(!db){lsSet();render()}
+  say('Đã nhập '+ok+' dòng từ Excel'+(skip?' (bỏ qua '+skip+' dòng tiêu đề/trùng/lỗi).':'.'));
+ }catch(err){say('Không đọc được file. Hãy dùng file Excel xuất từ nút Xuất Excel.')}
+};
+
+// Ảnh chia sẻ
+var shareBlob=null,shareKey='',tm;
+function mkBlob(){
+ // Vẽ trực tiếp lên canvas (không đi qua SVG) để ảnh luôn đủ và đúng tỉ lệ
+ const s1=clamp(val(1)),s2=clamp(val(2)),ts=curTs(),key=s1+'|'+s2+'|'+ts;
+ if(key===shareKey&&shareBlob)return Promise.resolve(shareBlob);
+ const c=document.createElement('canvas');c.width=892;c.height=1224;const g=c.getContext('2d');
+ g.scale(2,2);g.translate(0,-56);
+ const bs=[s1,s2],ms=[mass(s1),mass(s2)],cols=['#5b9bd5','#ed7d31'],sx=[35,232],W=188,T=367,HH=274,serif='"Times New Roman",Times,serif';
+ const R=(x,y,w,h,f)=>{g.fillStyle=f;g.fillRect(x,y,w,h)};
+ const TX=(x,y,sz,f,t,st)=>{g.fillStyle=f;g.font=(st||'bold')+' '+sz+'px '+serif;g.textAlign='center';g.fillText(String(t),x,y)};
+ const d=new Date(ts),dstr=p(d.getDate())+'/'+p(d.getMonth()+1)+'/'+d.getFullYear()+' '+d.getHours()+':'+p(d.getMinutes());
+ R(0,0,446,700,'#fff');R(0,56,446,419,'#e9e9e9');
+ TX(118,77,14,'#1e5f2a',dstr,'italic bold');TX(312,77,14,'#1e5f2a','Ngày '+d.getDate()+' tháng '+(d.getMonth()+1)+' năm '+d.getFullYear(),'italic bold');
+ for(let i=0;i<=9;i++)TX(16,T-i*HH/9+3,10,'#333',i);
+ [0,1].forEach(i=>{
+  const x=sx[i],h=(H-bs[i])/H*HH,cx=x+W/2;
+  R(x,93,W,277,'#3a3a3a');R(x+8,93,W-16,HH,'#cfcfcf');R(x+8,T-h,W-16,h,cols[i]);
+  g.beginPath();g.moveTo(x,370);g.lineTo(x+W,370);g.lineTo(cx+28,448);g.lineTo(cx-28,448);g.closePath();
+  g.fillStyle='#bdbdbd';g.fill();g.strokeStyle='#333';g.lineWidth=3;g.stroke();R(x,367,W,6,'#222');
+  TX(cx,398,17,cols[i],'SILO');TX(cx,418,17,cols[i],i+1);
+ });
+ R(0,475,446,75,'#d9d9d9');R(0,551,446,56,'#d0d0d0');R(0,612,446,56,'#bfa58c');
+ [0,1].forEach(i=>{
+  const cx=sx[i]+W/2;
+  TX(cx,497,16,'#111','Blank level');TX(cx,520,16,'#111','Silo '+(i+1));TX(cx,543,16,'#111','(m)');
+  TX(cx,597,44,cols[i],r2(bs[i])+NB+'mét');
+ });
+ TX(223,656,50,'#000',r1(ms[0]+ms[1]).toFixed(1)+NB+'tấn');
+ return new Promise((ok,no)=>c.toBlob(b=>{if(!b){no();return}shareBlob=b;shareKey=key;ok(b)},'image/png'));
+}
+// tạo sẵn ảnh để bấm nút là mở bảng chia sẻ ngay
+function pre(){clearTimeout(tm);tm=setTimeout(()=>mkBlob().catch(()=>{}),400)}
+function showImg(b,t){$('im').src=URL.createObjectURL(b);$('mh').textContent=t;$('ov').hidden=false}
+async function doCopy(){
+ const hint='Mở Zalo / Messenger / Telegram / Gmail, giữ vào ô soạn tin rồi chọn Dán.';
+ let w=null;
+ try{if(navigator.clipboard&&window.ClipboardItem)w=navigator.clipboard.write([new ClipboardItem({'image/png':mkBlob()})])}catch(e){w=null}
+ const sv=doSave();
+ try{
+  if(!w)throw{name:'trình duyệt không hỗ trợ'};
+  await w;await sv;
+  say('Đã sao chép ảnh. '+hint+' '+$('st').textContent);
+ }catch(e){
+  await sv;
+  try{showImg(await mkBlob(),'Không sao chép tự động được ('+((e&&e.name)||'lỗi')+'). Hãy NHẤN GIỮ vào ảnh → chọn Sao chép (hoặc Chia sẻ), rồi dán vào Zalo, Messenger…')}
+  catch(x){say('Không tạo được ảnh.')}
+ }
+}
+$('share').onclick=doCopy;
+$('cl').onclick=()=>{$('ov').hidden=true};
+const dlImg=async()=>{try{await saveFile('muc-xi-mang-silo.png',shareBlob,'image/png')}catch(e){}};
+$('sv').onclick=dlImg;
+$('cp').onclick=async()=>{try{await navigator.clipboard.write([new ClipboardItem({'image/png':shareBlob})]);$('mh').textContent='Đã sao chép ảnh. Mở Zalo/Messenger, giữ vào ô chat rồi chọn Dán.'}catch(e){$('mh').textContent='Không sao chép được ở thiết bị này. Hãy NHẤN GIỮ vào ảnh để chia sẻ.'}};
+init();
+</script>
+</body>
+</html>
